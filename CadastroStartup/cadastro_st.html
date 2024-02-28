@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="cadastro_st.css">
+</head>
+<body>
+    <div class="hero">
+        <div class="form-box">
+            <p class="cadastro-startup-titulo"> <b>Cadastro Startup</b></p>
+            <div class="button-box">
+                <div id="btn"></div>
+                <button type="button" class="toggle-btn" onclick="login()"><b>Startup</b></button>
+            </div>
+            
+            <form id="login" class="input-group" method="POST" action="config.php" onsubmit="return validarEmail('email-startup')">
+                <input name="nomeStartup" id="nome-startup" type="text" class="input-field" placeholder="Nome da Startup" required>
+                <input name="cnpjStartup" id="cnpj-startup" type="text" class="input-field" placeholder="CNPJ" oninput="formatCNPJ(this)" required>
+                <input name="ramo" id="ramo-startup" type="text" class="input-field" placeholder="Ramo" required>
+                <input name="telefoneStartup" id="telefone-startup"  type="text" class="input-field" placeholder="Telefone" required>
+               <input type="text" name="qtdFuncionarios" class="input-field" placeholder="quantidade de funcionario " required>
+              <input type="text" name="descricaoEmpre" id="ds-Startup" class="input-field" placeholder="Descrição da Startup" required>
+                <input name="emailStartup" id="email-startup" type="email"  class="input-field" placeholder="E-mail">
+                <input name="senhaStartup" id="senha-startup" type="text" class="input-field" placeholder="Senha" required>
+                <input type="checkbox" class="check-box"><span>Lembrar Senha</span>
+                <button type="submit" class="submit-btn"><b>Cadastrar</b></button>
+            </form>
+            
+            <div class="mt-5">
+                <br>
+                <br>
+                <br>
+                <br>
+                <p >Se você já realizou seu cadastro, <a href="/Login/login.html">clique aqui</a> para fazer login.</p>
+                <br>
+        </div>
+          
+        </div>
+    </div>
+
+    <script src="cadastro_st.js"></script>
+</body>
+</html>

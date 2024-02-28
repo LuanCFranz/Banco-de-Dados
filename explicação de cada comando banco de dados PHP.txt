@@ -12,12 +12,6 @@ $conexao = mysqli_connect("localhost:3306", "root", "Lu@n1105", "tcc");
 banco de dados MySQL.
 
 --------------------------------------------
-$ativar_js = true;
-
- - Esta linha define uma variável $ativar_js como verdadeira (true). 
-Ela parece não estar sendo utilizada neste código.
-
----------------------------------------------
 if (!$conexao) {
     echo "Falha na conexão com o banco de dados.";
 

@@ -4,8 +4,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Conexão com o banco de dados
     $conexao = mysqli_connect("localhost:3306", "root", "Lu@n1105", "tcc");
 
-    $ativar_js = true;
-
     // Teste de conexão
     if (!$conexao) {
         echo "Falha na conexão com o banco de dados.";

@@ -1,0 +1,78 @@
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+
+ - Este comando verifica se os dados foram enviados 
+via método POST. O $_SERVER["REQUEST_METHOD"] contém o método 
+HTTP usado para acessar a página atual.
+
+-----------------------------------------
+$conexao = mysqli_connect("localhost:3306", "root", "Lu@n1105", "tcc");
+
+ - Aqui está sendo feita a conexão com o banco de dados MySQL. O mysqli_connect() 
+é uma função do MySQLi (MySQL Improved Extension) do PHP para conectar-se a um 
+banco de dados MySQL.
+
+--------------------------------------------
+$ativar_js = true;
+
+ - Esta linha define uma variável $ativar_js como verdadeira (true). 
+Ela parece não estar sendo utilizada neste código.
+
+---------------------------------------------
+if (!$conexao) {
+    echo "Falha na conexão com o banco de dados.";
+
+ - Este bloco de código verifica se houve falha na conexão com o banco de dados. 
+Se não for possível estabelecer a conexão, exibe uma mensagem de erro.
+
+-----------------------------------------------
+$cpf = isset($_POST['cpf']) ? mysqli_real_escape_string($conexao, $_POST['cpf']) : '';
+
+ - Aqui, o código verifica se o campo cpf foi enviado via POST. Se sim, ele usa a função mysqli_real_escape_string() 
+para evitar injeção de SQL e atribui o valor à variável $cpf. Caso contrário, atribui uma string vazia.
+
+------------------------------------------------
+$sql = "SELECT cpf FROM pessoa_fisica WHERE cpf='$cpf'";
+
+ - Esta linha cria uma consulta SQL para verificar se o CPF 
+já está cadastrado no banco de dados.
+ 
+--------------------------------------------------
+if (mysqli_num_rows($retorno,) > 0) {
+
+ - Aqui é verificado se a consulta SQL retornou algum resultado 
+(ou seja, se o CPF já está cadastrado). Se houver mais de 0 linhas no resultado, 
+significa que o CPF já está cadastrado.
+
+----------------------------------------------------
+echo "<script>window.location.href='http://localhost/Inova%20Start/Inova%20Start/CadastroInvestidor/cadastro_in.html';</script>";
+ 
+ - Se o CPF já estiver cadastrado, o código redireciona o 
+usuário para outra página HTML usando JavaScript.
+  
+----------------------------------------------------
+$sql = "INSERT INTO pessoa_fisica(nome, cpf, data_nasc, endereco, telefone, email, senha) VALUES ('$nome', '$cpf', '$dataNasc', '$endereco', '$telefone', '$email', '$senha')";
+
+Esta linha cria uma consulta SQL para inserir os dados do 
+formulário na tabela pessoa_fisica do banco de dados.
+
+-------------------------------------------------------
+echo "<script>window.location.href='http://localhost/Inova%20Start/Inova%20Start/Login/login.html';</script>";
+
+Se os dados forem inseridos com sucesso no banco de dados,
+ o código redireciona o usuário para a página de login usando JavaScript.
+
+-----------------------------------------------------------
+echo "Erro ao cadastrar: " . mysqli_error($conexao);
+
+Se houver algum erro ao executar a consulta SQL de inserção, 
+esta linha exibe uma mensagem de erro com detalhes.
+
+------------------------------------------------------------
+} else {
+    echo "Formulário não submetido.";
+}
+
+Se não houver dados enviados via método POST, este bloco de código será executado 
+e exibirá uma mensagem indicando que o formulário não foi submetido.
+
+---------------------------------------------------------------

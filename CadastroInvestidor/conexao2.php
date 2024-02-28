@@ -1,3 +1,5 @@
+// Feito por Luan Carlos
+
 <?php
 // Verifica se os dados foram enviados via POST
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
